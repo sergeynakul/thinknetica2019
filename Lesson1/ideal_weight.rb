@@ -1,8 +1,8 @@
 puts "Введите ваше имя"
-name = gets.capitalize.chomp
+name = gets.chomp.capitalize
 
 puts "Введите ваш рост"
-height = gets.chomp.to_i
+height = gets.to_i
 
 ideal_weight = height - 110
 

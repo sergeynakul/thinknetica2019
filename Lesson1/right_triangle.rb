@@ -1,21 +1,21 @@
 sides = [] 
 
 print "Введите первую сторону треугольника: "
-sides << gets.chomp.to_f
+sides << gets.to_f
 
 print "Введите вторую сторону  треугольника: "
-sides << gets.chomp.to_f
+sides << gets.to_f
 
 print "Введите третью сторону треугольника: "
-sides << gets.chomp.to_f
+sides << gets.to_f
 
-sorted_sides = sides.sort! 
+a, b, c = sides.sort
 
-if (sorted_sides[0] == sorted_sides[1]) && sorted_sides[0] == sorted_sides[2]
+if (a == b) && a == c
   puts "Треугольник не является прямоугольным, он равносторонний и равнобедренный!"
-elsif sorted_sides[0] == sorted_sides[1]
+elsif a == b
   puts "Треугольник является равнобедеренным"
-elsif sorted_sides[2]**2 == sorted_sides[0]**2 + sorted_sides[1] ** 2
+elsif c**2 == a**2 + b**2
   puts "Треугольник является прямоугольным"
 else
   puts "Треугольник не является прямоугольным"
