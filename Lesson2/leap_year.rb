@@ -19,7 +19,7 @@ loop do
   elsif month == 1
     puts day_month
   else
-    puts "Номер дня с начала года: #{months.take(month-1).inject(:+) + day_month}"
+    puts "Номер дня с начала года: #{months.take(month-1).sum + day_month}"
   end
 end
 
