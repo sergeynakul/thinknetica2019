@@ -11,10 +11,10 @@ loop do
   print "Введите кол-во купленного товара: "
   quantity = gets.to_f
   
-  shop_cart[item] = { цена: price, количество: quantity, итого: price * quantity } 
+  shop_cart[item] = { price: price, quantity: quantity, amount: price * quantity } 
 end
 
-total_price = shop_cart.sum{ |цена:, количество:, итого:| итого }
+total_price = shop_cart.sum{ |price:, quantity:, amount:| amount }
 
 puts shop_cart
 puts "Общая сумма покупок: #{total_price}"
