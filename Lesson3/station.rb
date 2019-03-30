@@ -1,5 +1,5 @@
 class Station
-  attr_accessor :name
+  attr_reader :name
 
   def initialize(name)
     @name = name
@@ -11,11 +11,11 @@ class Station
   end 
 
   def trains
-    @trains.each { |train| puts train.number }
+    @trains
   end 
-  
-  def trains_type(type_of)
-    @trains.each { |train| puts train.type_of}
+
+  def trains_type(type)
+    @trains.select  { |train| train.type_of if train.type_of == type }
   end  
 
   def send_train(train)
