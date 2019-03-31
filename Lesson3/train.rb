@@ -61,7 +61,7 @@ class Train
   private
 
   def change_current_station
-    @current_station.send_train(self) unless @current_station == nil
+    @current_station.send_train(self) if @current_station 
     @current_station = @route.stations[@current_station_index]
     @current_station.take_train(self) 
   end
