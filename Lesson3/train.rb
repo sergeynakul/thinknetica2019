@@ -6,7 +6,6 @@ class Train
     @type_of = type_of
     @carriages = carriages
     @speed = 0
-    @current_station_index 
   end  
 
   def up_speed(new_speed)
@@ -33,33 +32,38 @@ class Train
 
   def add_route(route_new)
     @route = route_new
-    @current_station = @route.start_station
+    @current_station_index = 0
+    change_current_station
   end 
 
   def move_next_station
     return if (@current_station == @route.end_station)
-    @current_station_index = @route.stations.index(@current_station) +1
+    @current_station_index += 1
     change_current_station
   end  
 
   def move_previous_station
     return if (@current_station == @route.start_station)
-    @current_station_index = @route.stations.index(@current_station) - 1
+    @current_station_index -= 1
     change_current_station
   end  
 
   def show_next_station
+    return if (@current_station == @route.end_station)
     @route.stations[@current_station_index + 1]
   end 
 
   def show_previous_station
+    return if (@current_station == @route.start_station)
     @route.stations[@current_station_index - 1]
   end 
   
   private
 
   def change_current_station
+    @current_station.send_train(self) unless @current_station == nil
     @current_station = @route.stations[@current_station_index]
+    @current_station.take_train(self) 
   end
 end 
   
