@@ -6,7 +6,7 @@ module InstanceCounter
 
   module ClassMethods
     def instances
-      @instance.nil? ? 0 : @instance
+      @instance ||= 0
     end
 
     private 
