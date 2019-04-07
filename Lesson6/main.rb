@@ -39,29 +39,29 @@ class Main
     when 0
       exit
     when 1
-      check_error(:station_create)
+      call_action(:station_create)
     when 2
-      check_error(:train_create)
+      call_action(:train_create)
     when 3
-      check_error(:route_create)
+      call_action(:route_create)
     when 4
-      check_error(:route_edit)
+      call_action(:route_edit)
     when 5
-      check_error(:route_set_train)
+      call_action(:route_set_train)
     when 6
-      check_error(:carriage_add)
+      call_action(:carriage_add)
     when 7
-      check_error(:carriage_remove)
+      call_action(:carriage_remove)
     when 8
-      check_error(:train_move)
+      call_action(:train_move)
     when 9
-      check_error(:list_stations_trains)
+      call_action(:list_stations_trains)
     end
   end
 
   private
 
-  def check_error(method)
+  def call_action(method)
     self.send(method)
   rescue RuntimeError => e
     puts e.inspect
