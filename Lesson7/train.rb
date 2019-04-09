@@ -20,7 +20,7 @@ class Train
   end  
 
   def all_carriages
-    @carriages.each.with_index(1) { |carriage, index| yield(carriage,index) }
+    @carriages.each_with_index { |carriage, index| yield(carriage,index) }
   end
 
   def self.find(train_number)

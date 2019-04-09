@@ -10,7 +10,7 @@ class CarriagePassenger
   end 
 
   def engadged_seat
-    @seats_busy += 1
+    @seats_busy += 1 if @seats_busy < @seats
   end    
  
 
