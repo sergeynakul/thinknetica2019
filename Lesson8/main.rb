@@ -142,7 +142,7 @@ class Main
       puts 'Занять место в вагоне?(y/n)'
       answer = gets.chomp.downcase
       if answer == 'y'
-        carriage.engadged_seat
+        carriage.engadged_seat && train.add_carriage(carriage)
       else
         train.add_carriage(carriage)
       end
@@ -227,7 +227,7 @@ class Main
 
   def choose_route
     routes.each_with_index do |route, index|
-      puts "#{index}: #{route.stations.first.name} --- #{route.stations.last.name}"
+      puts "#{index}:#{route.stations.first.name} -#{route.stations.last.name}"
     end
   end
 
@@ -238,15 +238,14 @@ class Main
   end
 
   def show_carriages(train)
-    if train.type_of == :passenger
-      train.all_carriages do |carriage, index|
-        puts "№: #{index}, тип: #{carriage.type_of}, свободных мест: #{carriage.free_seats},
-        занятых: #{carriage.seats_busy}"
-      end
-    elsif train.type_of == :cargo
-      train.all_carriages do |carriage, index|
-        puts "№: #{index}, тип: #{carriage.type_of}, свободный объем: #{carriage.free_volume},
-        занято: #{carriage.volume_busy}"
+    train.all_carriages do |carriage, index|
+      print "№: #{index}, тип: #{carriage.type_of}, "
+      if train.type_of == :passenger
+        print "свободных мест: #{carriage.free_seats},
+                занятых: #{carriage.seats_busy} \n"
+      elsif train.type_of == :cargo
+        print "свободный объем: #{carriage.free_volume},
+              занято: #{carriage.volume_busy} \n"
       end
     end
   end
